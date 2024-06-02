@@ -184,10 +184,6 @@ class OpenWeatherMapOneCall: public JsonListener {
 
     boolean metric = true;
     String language;
-    uint8_t maxDailyForecasts = 5;
-    uint8_t maxHourlyForecasts = 12;
-    uint8_t *allowedHours;
-    uint8_t allowedHoursCount = 0;
     uint8_t currentForecast;
 
     void doUpdate(OpenWeatherMapOneCallData *data, String path);
