@@ -212,6 +212,9 @@ void OpenWeatherMapOneCall::value(String value)
     if (currentKey == "wind_deg") {
       this->data->hourly[hourlyItemCounter].windDeg = value.toFloat();
     }
+	if (currentKey == "pop") {
+      this->data->hourly[hourlyItemCounter].pop = value.toFloat();
+    }
 
     // weatherItemCounter: only get the first item if more than one is available
     if (currentParent.startsWith("/ROOT/hourly[]/_obj/weather[]") && weatherItemCounter == 0) {
@@ -227,9 +230,6 @@ void OpenWeatherMapOneCall::value(String value)
       if (currentKey == "icon") {
         this->data->hourly[hourlyItemCounter].weatherIcon = value;
         this->data->hourly[hourlyItemCounter].weatherIconMeteoCon = getMeteoconIcon(value);
-      }
-      if (currentKey == "pop") {
-      this->data->hourly[hourlyItemCounter].pop = value.toFloat();
       }
     }
   }
