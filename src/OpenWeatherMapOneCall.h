@@ -92,6 +92,8 @@ typedef struct OpenWeatherMapOneCallHourlyData {
   // "icon": "09d"
   String weatherIcon;
   String weatherIconMeteoCon;
+  //"pop":0.15
+  float pop;
 
 } OpenWeatherMapOneCallHourlyData;
 
@@ -143,6 +145,8 @@ typedef struct OpenWeatherMapOneCallDailyData {
   String weatherIconMeteoCon;
   // "clouds": 0
   uint8_t clouds;
+  //"pop":0.47
+  float pop;
   // "rain": 5.97
   float rain;
   // "snow":	0.15

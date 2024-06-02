@@ -39,7 +39,7 @@ void OpenWeatherMapOneCall::update(OpenWeatherMapOneCallData *data, String appId
 String OpenWeatherMapOneCall::buildPath(String appId, float lat, float lon)
 {
   String units = metric ? "metric" : "imperial";
-  return "/data/2.5/onecall?appid=" + appId + "&lat=" + lat + "&lon=" + lon + "&units=" + units + "&lang=" + language;
+  return "/data/3.0/onecall?appid=" + appId + "&lat=" + lat + "&lon=" + lon + "&units=" + units + "&lang=" + language;
 }
 
 void OpenWeatherMapOneCall::doUpdate(OpenWeatherMapOneCallData *data, String path)
@@ -228,6 +228,9 @@ void OpenWeatherMapOneCall::value(String value)
         this->data->hourly[hourlyItemCounter].weatherIcon = value;
         this->data->hourly[hourlyItemCounter].weatherIconMeteoCon = getMeteoconIcon(value);
       }
+      if (currentKey == "pop") {
+      this->data->hourly[hourlyItemCounter].pop = value.toFloat();
+      }
     }
   }
 
@@ -259,6 +262,9 @@ void OpenWeatherMapOneCall::value(String value)
     }
     if (currentKey == "clouds") {
       this->data->daily[dailyItemCounter].clouds = value.toInt();
+    }
+    if (currentKey == "pop") {
+      this->data->hourly[dailyItemCounter].pop = value.toFloat();
     }
     if (currentKey == "rain") {
       this->data->daily[dailyItemCounter].rain = value.toFloat();
