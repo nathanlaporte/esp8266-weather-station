@@ -264,7 +264,7 @@ void OpenWeatherMapOneCall::value(String value)
       this->data->daily[dailyItemCounter].clouds = value.toInt();
     }
     if (currentKey == "pop") {
-      this->data->hourly[dailyItemCounter].pop = value.toFloat();
+      this->data->daily[dailyItemCounter].pop = value.toFloat();
     }
     if (currentKey == "rain") {
       this->data->daily[dailyItemCounter].rain = value.toFloat();
